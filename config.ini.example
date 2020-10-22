@@ -12,9 +12,7 @@ secret_key =
 
 [rclone_conf_gd]
 team_drive_id = 11
-sa_1 = 11
-sa_2 = 11
 
-[rclone_conf_od]
-rclone_conf = 11
+
+
 

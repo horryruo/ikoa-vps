@@ -33,14 +33,9 @@ def read_config():
     if drive == 'gd':
         team_drive_id = config['rclone_conf_gd']['team_drive_id']
         conf_data['team_drive_id'] = team_drive_id
-        sa_1 = config['rclone_conf_gd']['sa_1']
-        conf_data['sa_1'] = sa_1
-        sa_2 = config['rclone_conf_gd']['sa_2']
-        conf_data['sa_2'] = sa_2
+       
 
-    elif drvie == 'od':
-        od_conf = config['rclone_conf_od']['rclone_conf']
-        conf_data['od_conf'] = od_conf
+    
     else:
         print('配置文件错误')
 

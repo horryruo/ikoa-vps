@@ -233,5 +233,5 @@ def load_ser(user_id):
 
 
 if __name__ == '__main__':
-    #APP.run(debug=True, host='127.0.0.1', port=5000)
-    pass
+    APP.run(debug=True, host='127.0.0.1', port=5000)
+    
