@@ -3,9 +3,9 @@
 ID=$1
 test "$2" = "mgs" && TYPE="cid" || TYPE=$2
 TaskId=$3
-TAG=$4
-RCLONE_DESTINATION=$5
-LOG_PATH=$6
+RCLONE_DESTINATION=$4
+LOG_PATH=$5
+TAG=$6
 IFS="," read -r -a idList <<< "$ID"
 idListLen=${#idList[@]}
 RcloneConf="rclone_1.conf"

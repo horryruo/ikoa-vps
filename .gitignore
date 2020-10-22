@@ -4,3 +4,4 @@ vscode/
 .idea/
 __pycache__/
 config.ini
+push.bat
