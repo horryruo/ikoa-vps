@@ -1,6 +1,6 @@
 env
 venv/
 vscode/
-idea/
+.idea/
 __pycache__/
 config.ini

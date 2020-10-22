@@ -20,32 +20,13 @@
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:vps-beta" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:main" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfe2bafe-340d-4b2f-aa0a-64fa9fd8bbdc" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/webapp/loadini.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dockerignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/heroku-exec.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/ld.so.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanza/config.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanza/iKOA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanza/rclone-exclude-file.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanza/rclone_1.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanza/rclone_2.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/heroku.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/gunicorn.conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/gunicorn.conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/start.sh" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/start.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/task.sh" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/task.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start.py" beforeDir="false" afterPath="$PROJECT_DIR$/start.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,7 +173,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1603347899870</updated>
-      <workItem from="1603347902533" duration="13456000" />
+      <workItem from="1603347902533" duration="14405000" />
     </task>
     <servers />
   </component>
@@ -210,7 +191,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="vps-beta" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -227,22 +208,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1058" y="294" key="#HTTP_Proxy/0.0.1920.1040@0.0.1920.1040" timestamp="1603352051399" />
-    <state width="1232" height="259" key="GridCell.Tab.0.bottom" timestamp="1603362294698">
+    <state width="1232" height="259" key="GridCell.Tab.0.bottom" timestamp="1603362721588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1232" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603362294698" />
-    <state width="1232" height="259" key="GridCell.Tab.0.center" timestamp="1603362294698">
+    <state width="1232" height="259" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603362721588" />
+    <state width="1232" height="259" key="GridCell.Tab.0.center" timestamp="1603362721587">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1232" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603362294698" />
-    <state width="1232" height="259" key="GridCell.Tab.0.left" timestamp="1603362294698">
+    <state width="1232" height="259" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603362721587" />
+    <state width="1232" height="259" key="GridCell.Tab.0.left" timestamp="1603362721587">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1232" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603362294698" />
-    <state width="1232" height="259" key="GridCell.Tab.0.right" timestamp="1603362294698">
+    <state width="1232" height="259" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603362721587" />
+    <state width="1232" height="259" key="GridCell.Tab.0.right" timestamp="1603362721588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1232" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603362294698" />
+    <state width="1232" height="259" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603362721588" />
     <state width="1232" height="297" key="GridCell.Tab.1.bottom" timestamp="1603362260068">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,7 +273,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ikoa_web$loadini.coverage" NAME="loadini Coverage Results" MODIFIED="1603362282584" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
+    <SUITE FILE_PATH="coverage/ikoa_web$loadini.coverage" NAME="loadini Coverage Results" MODIFIED="1603362721579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
     <SUITE FILE_PATH="coverage/ikoa_web$start__1_.coverage" NAME="start (1) Coverage Results" MODIFIED="1603361322558" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
     <SUITE FILE_PATH="coverage/ikoa_web$start.coverage" NAME="start Coverage Results" MODIFIED="1603361037736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ikoa_web$app.coverage" NAME="app Coverage Results" MODIFIED="1603361330360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webapp" />
