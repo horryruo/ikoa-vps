@@ -36,6 +36,8 @@ def read_config():
        
 
     
+    elif drive == 'od':
+        pass
     else:
         print('配置文件错误')
 
