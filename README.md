@@ -17,17 +17,28 @@
   由于本人能力有限，不能实现完全自动化，部分文件任需手动
   
 1、Python 3.6+ is Required  
+
 2、`git clone https://github.com/horryruo/ikoa-vps.git && chmod +x ikoa-vps` 
+
 3、`cd ikoa-vps`  
+
 4、`pip3 install -r requirements.txt`  
+
 5、`cp config.ini.example config.ini` 
+
 6、install rclone `curl https://rclone.org/install.sh | sudo bash`
+
 7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹iKOA重命名，然后把iKOA_32重命名为iKOA，且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），成功能单独启动iKOA才进行下一步。
+
 8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`  debian:`apt-get install moreutils`
 9、配置config.ini,内有说明
+
 10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件也不会参与git同步）
+
 11、确保配置完毕，即可在ikoa-vps目录下，创建screen，然后运行`python3 start.py`,接着就可以输入你的vps ip：端口，看到熟悉的页面
+
 12、可使用nginx反代127.0.0.1:端口 即可实现https访问
+
 13、如若配置失败，或者运行失败需要重新运行，往往会被占用端口，使用命令`lsof -i:端口`可查看所有占用端口程序，再使用`kill -9 pid`结束所有进程再开启服务。
 
 
