@@ -1,0 +1,20 @@
+[default]
+usedrive = gd
+destination_path = 11
+log_path = 11
+adminuser = 11
+adminpassword = 11
+merge_bool = 11
+serial_code = 11
+monthly_only = 11
+output_filename = 11
+secret_key = 
+
+[rclone_conf_gd]
+team_drive_id = 11
+sa_1 = 11
+sa_2 = 11
+
+[rclone_conf_od]
+rclone_conf = 11
+
