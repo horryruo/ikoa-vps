@@ -1,17 +1,29 @@
 [default]
+#使用的网盘，gd or od，目前只支持gd
 usedrive = gd
+#下载文件夹，以/开头
 destination_path = 11
+#日志，以/开头
 log_path = 11
+#用户名
 adminuser = 11
+#密码
 adminpassword = 11
-merge_bool = 11
+#合并
+merge_bool = true
+#序列码
 serial_code = 11
-monthly_only = 11
-output_filename = 11
+#月额
+monthly_only = true
+#输出文件，cid or num
+output_filename = cid
+#首次自动生成，删除下次启动即可再次生成
 secret_key = 
+#运行的端口
 runport = 
 
 [rclone_conf_gd]
+#gd的folder id
 team_drive_id = 11
 
 
