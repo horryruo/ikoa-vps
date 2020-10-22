@@ -31,6 +31,7 @@
 7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹iKOA重命名，然后把iKOA_32重命名为iKOA，且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），成功能单独启动iKOA才进行下一步。
 
 8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`  debian:`apt-get install moreutils`
+
 9、配置config.ini,内有说明
 
 10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件也不会参与git同步）
