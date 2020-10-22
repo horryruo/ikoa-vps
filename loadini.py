@@ -23,6 +23,8 @@ def read_config():
     conf_data['monthly_only'] = monthly_only
     output_filename = config['default']['output_filename']
     conf_data['output_filename'] = output_filename
+    runport = config['default']['runport']
+    conf_data['runport'] = runport
     secret_key = config['default']['secret_key']
     if secret_key == '':
         secret_key = os.urandom(24)

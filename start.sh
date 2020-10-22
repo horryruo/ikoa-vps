@@ -6,6 +6,7 @@ TEAM_DRIVE_ID=$2
 
 MERGE_BOOL=$3
 OUTPUT_FILENAME=$4
+PORT=$5
 if [[ -n $SERIAL_CODE && -n $MERGE_BOOL ]]; then
     sed -i "/^serial/c\serial = \'$SERIAL_CODE\'" ./fanza/config.toml
     echo "team_drive = $TEAM_DRIVE_ID" >> ./fanza/rclone_1.conf
@@ -27,4 +28,4 @@ fi
 
 
 
-gunicorn --worker-class eventlet -w 1 -c gunicorn.conf.py --bind 0.0.0.0:5000 wsgi --preload
+gunicorn --worker-class eventlet -w 1 -c gunicorn.conf.py --bind 0.0.0.0:"$PORT" wsgi --preload
