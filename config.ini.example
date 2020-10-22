@@ -20,7 +20,7 @@ output_filename = cid
 #首次自动生成，删除下次启动即可再次生成
 secret_key = 
 #运行的端口
-runport = 
+runport = 5000
 
 [rclone_conf_gd]
 #gd的folder id
