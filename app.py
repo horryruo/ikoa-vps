@@ -113,7 +113,13 @@ TASK = Task()
 ADMIN = User(0, APP.config['ADMINUSER'], APP.config['ADMINPASSWORD'])
 
 
-
+@SCHEDULER.task('interval', id='dyno', minutes=14, misfire_grace_time=3600)
+def prevent_idiling():
+    url = '127.0.0.1:{}'.format(conf_data['runport'])
+    ts_status = subprocess.check_output(
+        "ts | awk 'NR == 1 { print $7 }'", shell=True, universal_newlines=True)
+    if ts_status.rstrip() == '[run=1/1]':
+        requests.get(url)
 
 
 @APP.before_request
@@ -233,5 +239,5 @@ def load_ser(user_id):
 
 
 if __name__ == '__main__':
-    APP.run(debug=True, host='127.0.0.1', port=5000)
+    APP.run(debug=True, host='0.0.0.0', port=5000)
     
