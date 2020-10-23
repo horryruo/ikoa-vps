@@ -168,5 +168,5 @@ if [[ -e $fileName && -d backup ]]; then
         echo "taskStatus ===>>> ${taskStatus}"
         echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 ${taskStatus}" >>  "./backup/${fileName}"
     fi
-    rclone --config="$RcloneConf" copy "./backup/${fileName}" "DRIVE:$LOG_PATH"                     
+    rclone --config="$RcloneConf" copy "backup/${fileName}" "DRIVE:$LOG_PATH"                     
 fi
