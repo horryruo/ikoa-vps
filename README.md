@@ -29,7 +29,7 @@
 
 6、install rclone `curl https://rclone.org/install.sh | sudo bash`
 
-7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹"iKOA"重命名，然后把"iKOA_32位"重命名为"iKOA"(区分大小写),且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），成功能单独启动iKOA才进行下一步。
+7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹"iKOA"重命名，然后把"iKOA_32位"重命名为"iKOA"(区分大小写),且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），然后确认iKOA权限为755权限，否则无法启动。检查 `./iKOA` 可以单独启动iKOA才进行下一步。
 
 8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`  debian:`apt-get install moreutils`
 
@@ -46,4 +46,7 @@
 
 ### 上传到onedrive
 目前为测试版，请在本地rclone配置好onedrive配置文件（自行谷歌），然后在fanza文件夹copy一份`cp rclone_3.conf.temp rclone_3.conf` ，然后把本地配置好的除名字外全部内容复制到rclone_3.conf,注意不要删掉原来的[DRIVE]标题，此为程序内置名字，更改后无法上传。
+### bug
+第一次启动可能会报一次错，请多次启动
 
+由于某个命令运行出错，暂时无法在web界面显示日志，后续想办法解决
