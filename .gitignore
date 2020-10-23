@@ -11,3 +11,4 @@ fanza/FILENAME_VAR.txt
 fanza/TIME_VAR.txt
 fanza/*.csv
 fanza/*.json
+fanza/rclone_3.conf
