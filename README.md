@@ -45,5 +45,5 @@
 
 
 ### 上传到onedrive
-目前为测试版，请在本地rclone配置好onedrive配置文件（自行谷歌），然后把除名字外全部内容复制到rclone_3.conf,注意不要删掉原来到[DRIVE]标题，此为程序内置名字，更改后无法上传。
+目前为测试版，请在本地rclone配置好onedrive配置文件（自行谷歌），然后在fanza文件夹copy一份`cp rclone_3.conf.temp rclone_3.conf` ，然后把本地配置好的除名字外全部内容复制到rclone_3.conf,注意不要删掉原来的[DRIVE]标题，此为程序内置名字，更改后无法上传。
 
