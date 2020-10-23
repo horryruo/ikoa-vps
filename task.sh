@@ -5,10 +5,17 @@ test "$2" = "mgs" && TYPE="cid" || TYPE=$2
 TaskId=$3
 RCLONE_DESTINATION=$4
 LOG_PATH=$5
-TAG=$6
+USE_DRIVE=$6
+TAG=$7
 IFS="," read -r -a idList <<< "$ID"
 idListLen=${#idList[@]}
-RcloneConf="rclone_1.conf"
+if [[ $USE_DRIVE == "od" ]]; then
+    RcloneConf="rclone_3.conf"
+elif [[ $USE_DRIVE == "gd" ]]; then
+    RcloneConf="rclone_1.conf"
+else
+    echo "配置文件usedrive出错"
+fi
 DownloadCount=0
 cd ./fanza || exit
 codeQuota=$(./iKOA -E cid:118abp12345 | grep -oP '(?<=剩余\s)[0-9]+(?=\s次)')
@@ -128,8 +135,12 @@ for i in "${!idList[@]}"; do
             else
                 if [[ $RcloneConf == "rclone_1.conf" ]]; then
                     RcloneConf="rclone_2.conf"
-                else
+                elif [[ $RcloneConf == "rclone_2.conf" ]]; then
                     RcloneConf="rclone_1.conf"
+                elif  [[ $RcloneConf == "rclone_3.conf" ]]; then
+                    RcloneConf="rclone_3.conf"
+                else 
+                    echo "rclone配置文件出错"
                 fi
             fi
             sleep 10

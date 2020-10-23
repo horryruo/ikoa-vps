@@ -146,7 +146,7 @@ def add_ts_task(id_value, id_type, id_tag):
     id_list = id_value.split(',')
     list_group = [id_list[n:n + 12] for n in range(0, len(id_list), 12)]
     for item in list_group:
-        cmd = 'bash task.sh {} {} {} {} {} {}'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'], id_tag)
+        cmd = 'bash task.sh {} {} {} {} {} {} {}'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'], id_tag)
         os.system(cmd)
         TASK.task_queue.append(TASK.task_id)
         TASK.task_id += 1
