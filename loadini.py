@@ -32,16 +32,13 @@ def read_config():
         with open("config.ini", "w+") as f:
             config.write(f)
     conf_data['secret_key'] = secret_key
-    if drive == 'gd':
-        team_drive_id = config['rclone_conf_gd']['team_drive_id']
-        conf_data['team_drive_id'] = team_drive_id
+    
+    team_drive_id = config['rclone_conf_gd']['team_drive_id']
+    conf_data['team_drive_id'] = team_drive_id
        
 
     
-    elif drive == 'od':
-        pass
-    else:
-        print('配置文件错误')
+   
 
     return conf_data
 if __name__ == '__main__':
