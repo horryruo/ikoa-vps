@@ -156,19 +156,19 @@ for i in "${!idList[@]}"; do
     echo "$elapsed" > TIME_VAR.txt
 done
 csvOutput=$(awk 'BEGIN {FS=","; OFS=":"; ORS=" "} NR > 1 { array[$4]++; number=number+1; total=total+$5; } END { printf "ID in all:%d ", number; for (i in array) print i,array[i]; total=total/1024; printf "totalDownload:%.1fG",total }' "$fileName")
-taskStatus=$(ts | awk 'BEGIN {OFS=":"; ORS=" "} NR > 1 { array[$2]++;total+=1; } END { for (i in array) print i,array[i]; print "totalTask:" total }')
+#taskStatus=$(ts | awk 'BEGIN {OFS=":"; ORS=" "} NR > 1 { array[$2]++;total+=1; } END { for (i in array) print i,array[i]; print "totalTask:" total }')
 
 if [[ -e $fileName && -d backup ]]; then
-    totalTask=$(($(ts | wc -l) - 1))
+    #totalTask=$(($(ts | wc -l) - 1))
     cp "$fileName" backup
-    if [[ $((TaskId + 1)) -eq $totalTask ]]; then
-         echo "All ${totalTask} tasks finished ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次"
-         echo "Summary ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 totalTask:${totalTask}" >>  "./backup/${fileName}"      
-    else
-        echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次"
-        sleep 3  
-        echo "taskStatus ===>>> ${taskStatus}"
-        echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 ${taskStatus}" >>  "./backup/${fileName}"
-    fi
+    #if [[ $((TaskId + 1)) -eq $totalTask ]]; then
+    echo "All tasks finished ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次"
+    echo "Summary ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 " >>  "./backup/${fileName}"      
+    #else
+    echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次"
+        
+    #echo "taskStatus ===>>> ${taskStatus}"
+    #echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 ${taskStatus}" >>  "./backup/${fileName}"
+    #fi
     rclone --config="$RcloneConf" move "backup/${fileName}" "DRIVE:$LOG_PATH"                     
 fi
