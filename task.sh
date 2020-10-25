@@ -6,7 +6,8 @@ TaskId=$3
 RCLONE_DESTINATION=$4
 LOG_PATH=$5
 USE_DRIVE=$6
-TAG=$7
+MONTHLY_ONLY_BOOL=$7
+TAG=$8
 IFS="," read -r -a idList <<< "$ID"
 idListLen=${#idList[@]}
 if [[ $USE_DRIVE == "od" ]]; then
