@@ -35,7 +35,8 @@ def read_config():
     
     team_drive_id = config['rclone_conf_gd']['team_drive_id']
     conf_data['team_drive_id'] = team_drive_id
-       
+    down_time = config['default']['down_time']
+    conf_data['down_time'] = down_time
 
     
    

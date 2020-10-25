@@ -21,6 +21,8 @@ output_filename = cid
 secret_key = 
 #运行的端口
 runport = 5000
+#一次执行的个数(比如一次添加10个，down_time = 5 代表下载五个再上传五个，以此类推)
+down_time = 5
 
 [rclone_conf_gd]
 #gd的folder id

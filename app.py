@@ -18,6 +18,7 @@ from loadini import read_config
 
 
 conf_data = read_config()
+down_time = int(conf_data['down_time'])
 #print(conf_data)
 
 APP = Flask(__name__)
@@ -150,7 +151,7 @@ def login():
 def add_ts_task(id_value, id_type, id_tag):
     TASK.task_index += 1
     id_list = id_value.split(',')
-    list_group = [id_list[n:n + 12] for n in range(0, len(id_list), 12)]
+    list_group = [id_list[n:n + down_time] for n in range(0, len(id_list), down_time)]
     for item in list_group:
         cmd = 'bash task.sh {} {} {} {} {} {} {}'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'], id_tag)
         os.system(cmd)
