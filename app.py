@@ -61,7 +61,7 @@ class Task:
         self.task_queue = deque([])
         self.pushlog_finished = False
         self.background_thread = None
-
+ 
 
 class User(UserMixin):
     def __init__(self, user_id, username, password):
@@ -150,10 +150,11 @@ def login():
 
 def add_ts_task(id_value, id_type, id_tag):
     TASK.task_index += 1
+    TASK.task_id = 0
     id_list = id_value.split(',')
     list_group = [id_list[n:n + down_time] for n in range(0, len(id_list), down_time)]
     for item in list_group:
-        cmd = 'bash task.sh {} {} {} {} {} {} {} {}'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'], id_tag)
+        cmd = 'bash task.sh {} {} {} {} {} {} {} {} {}'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'],down_time, id_tag)
         os.system(cmd)
         TASK.task_queue.append(TASK.task_id)
         TASK.task_id += 1

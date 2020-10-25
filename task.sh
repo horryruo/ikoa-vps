@@ -7,7 +7,8 @@ RCLONE_DESTINATION=$4
 LOG_PATH=$5
 USE_DRIVE=$6
 MONTHLY_ONLY_BOOL=$7
-TAG=$8
+DOWN_TIME=$8
+TAG=$9
 IFS="," read -r -a idList <<< "$ID"
 idListLen=${#idList[@]}
 if [[ $USE_DRIVE == "od" ]]; then
@@ -65,7 +66,7 @@ if [[ $TaskId -eq 0 ]]; then
     NAME="$(date +"%Y-%m-%dT%H:%M:%SZ")-download_info.csv"
     echo "id,name,taskid,status,size,bitrate,multipart,tag,monthly" >> "$NAME"
     echo "$NAME" > FILENAME_VAR.txt
-    mkdir -p backup
+    mkdir -p backup 
 fi
 test -e FILENAME_VAR.txt && read -r fileName < FILENAME_VAR.txt || exit 1
 test -n "$TAG" && dirArgs="downloads/${TAG}" || dirArgs="downloads"
@@ -125,7 +126,7 @@ for i in "${!idList[@]}"; do
         echo "${idList[i]},,${TaskId},failed,,,,${TAG},${isMonthly}" >> "$fileName"
         echo "id:${idList[i]} taskid:${TaskId} status:failed tag:${TAG:-None} Monthly:${isMonthly}"
     fi
-    if [[ ($ikoaOutput =~ "已下载" && ($((DownloadCount % 4)) -eq 0 || $codeQuota -lt 45)) || $i -eq $((idListLen - 1)) ]]; then
+    if [[ ($ikoaOutput =~ "已下载" && ($((DownloadCount % DOWN_TIME)) -eq 0 || $codeQuota -lt 45)) || $i -eq $((idListLen - 1)) ]]; then
         sleep 2
         while true
         do
@@ -169,5 +170,5 @@ if [[ -e $fileName && -d backup ]]; then
         echo "taskStatus ===>>> ${taskStatus}"
         echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 ${taskStatus}" >>  "./backup/${fileName}"
     fi
-    rclone --config="$RcloneConf" copy "backup/${fileName}" "DRIVE:$LOG_PATH"                     
+    rclone --config="$RcloneConf" move "backup/${fileName}" "DRIVE:$LOG_PATH"                     
 fi
