@@ -50,8 +50,14 @@ updateWaitTime() {
 
 sleepHandler() {
     local elapsedTime
+    local lastTime
     updateWaitTime
-    test -e TIME_VAR.txt && read -r elapsedTime < TIME_VAR.txt || elapsedTime=0
+    test -e TIME_VAR.txt && read -r lastTime < TIME_VAR.txt || lastTime=0
+    nowTime=$(date +%s)
+    elapsedTime=$(( nowTime - lastTime ))
+    if [[ $lastTime -eq 0 ]]; then
+        elapsedTime=0
+    fi
     if [[ $elapsedTime -le $waitTime && $elapsedTime -ne 0 ]]; then
         local sleepTime=$((waitTime - elapsedTime))
         while [[ $sleepTime -ge 0 ]]; do
@@ -80,7 +86,7 @@ for i in "${!idList[@]}"; do
     sleep 1
     if [[ $isMonthly == "true" ]]; then
         sleepHandler
-        startTime=$SECONDS
+        startTime=$(date +%s)
         ikoaOutput=$(./iKOA -E -d "$dirArgs" "$TYPE":"${idList[i]}" | tail -n 6)
     elif [[ $isMonthly == "false" ]]; then
         if [[ $MONTHLY_ONLY_BOOL == "true" ]]; then
@@ -89,7 +95,7 @@ for i in "${!idList[@]}"; do
             continue
         else
             sleepHandler
-            startTime=$SECONDS
+            startTime=$(date +%s)
             ikoaOutput=$(./iKOA -E -d "$dirArgs" "$TYPE":"${idList[i]}" | tail -n 6)
             FLAG=1         
         fi
@@ -151,7 +157,7 @@ for i in "${!idList[@]}"; do
     if [[ $ikoaOutput =~ "查询无结果" ]]; then
         elapsed=0
     else
-        elapsed=$((SECONDS - startTime))  
+        elapsed=${startTime}
     fi  
     echo "$elapsed" > TIME_VAR.txt
 done
