@@ -15,7 +15,7 @@ $(document).ready(function () {
                     $('#submit-btn').removeClass('btn-primary').addClass('btn-success').text('Success');
                     setTimeout(function () {
                         $('#submit-btn').removeClass('btn-success').addClass('btn-primary').text('Submit');
-                    }, 500);
+                    }, 1000);
                     $('#id-data')[0].reset();
 
                 }
@@ -35,7 +35,7 @@ $(document).ready(function () {
                     $('#submit-btn').removeClass('btn-primary').addClass('btn-danger').text('Error');
                     setTimeout(function () {
                         $('#submit-btn').removeClass('btn-danger').addClass('btn-primary').text('Submit');
-                    }, 500);
+                    }, 3000);
                 }
             }
         });
@@ -67,10 +67,8 @@ function websocketClient() {
 
     socket.on('message', function (res) {
 
-        if (res.data == 'ts started') {
-            socket.emit('message', {
-                data: 'you can send data now'
-            });
+        if (res.data) {
+            $('#alert-progress-msg').text(res.data);
         }
     });
 

@@ -20,7 +20,16 @@ else
 fi
 DownloadCount=0
 cd ./fanza || exit
-codeQuota=$(./iKOA -E cid:118abp12345 | grep -oP '(?<=剩余\s)[0-9]+(?=\s次)')
+ikoastart=$(./iKOA -E cid:118abp12345)
+if [[ $ikoastart =~ "这程序的实例已在运行" ]]; then
+    echo "这程序的实例已在运行"
+    exit 1
+    #while [[ $(lsof -a iKOA|awk '{if(NR==2)print $2}') ]];do
+        #echo "关闭已存在的进程： $(lsof -a iKOA|awk '{if(NR==2)print $2}')"
+        #kill -9 $(lsof -a iKOA|awk '{if(NR==2)print $2}')
+    #done
+fi
+codeQuota=$(echo $ikoastart | grep -oP '(?<=剩余\s)[0-9]+(?=\s次)')
 
 if [[ $codeQuota -gt 0 ]]; then
     echo "序列码额度剩余 ${codeQuota} 次"
@@ -166,7 +175,7 @@ csvOutput=$(awk 'BEGIN {FS=","; OFS=":"; ORS=" "} NR > 1 { array[$4]++; number=n
 
 if [[ -e $fileName && -d backup ]]; then
     #totalTask=$(($(ts | wc -l) - 1))
-    cp "$fileName" backup
+    mv "$fileName" backup
     #if [[ $((TaskId + 1)) -eq $totalTask ]]; then
     echo "All tasks finished ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次"
     echo "Summary ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 " >>  "./backup/${fileName}"      
@@ -176,5 +185,5 @@ if [[ -e $fileName && -d backup ]]; then
     #echo "taskStatus ===>>> ${taskStatus}"
     #echo "Until Now ===>>> ${csvOutput} 序列码额度剩余 ${codeQuota} 次 ${taskStatus}" >>  "./backup/${fileName}"
     #fi
-    rclone --config="$RcloneConf" move "backup/${fileName}" "DRIVE:$LOG_PATH"                     
+    rclone --config="$RcloneConf" copy "backup/${fileName}" "DRIVE:$LOG_PATH"                     
 fi

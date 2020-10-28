@@ -16,10 +16,13 @@
     <div class="alert alert-info" role="alert">
         <span id="alert-progress"></span>
     </div>
+    <div class="alert alert-info" role="alert">
+        <span id="alert-progress-msg"></span>
+    </div>
 
     <div class="container">
         <form class="form-download" id="id-data" action="" method="post" novalidate>
-            <h2 class="form-download-heading">ikoa-web</h2>
+            <h2 class="form-download-heading">ikoa-web-control</h2>
             {{ form.csrf_token }}
             {{ form.id_type.label(class_="sr-only") }}
             {{ form.id_type(class_="form-control") }}

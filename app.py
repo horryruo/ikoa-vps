@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 import time
-from threading import Lock
+from threading import Lock,Thread
 from collections import deque
 import requests
 from flask import Flask, request, redirect, url_for, flash, render_template, jsonify
@@ -61,7 +61,7 @@ class Task:
         self.task_queue = deque([])
         self.pushlog_finished = False
         self.background_thread = None
- 
+        self.task_status = 0
 
 class User(UserMixin):
     def __init__(self, user_id, username, password):
@@ -152,13 +152,20 @@ def add_ts_task(id_value, id_type, id_tag):
     TASK.task_index += 1
     TASK.task_id = 0
     id_list = id_value.split(',')
+    TASK.task_status = 1
     #list_group = [id_list[n:n + down_time] for n in range(0, len(id_list), down_time)]
-    list_group = [id_list[:]]
-    for item in list_group:
-        cmd = 'bash task.sh {} {} {} {} {} {} {} {} {} | ts'.format(','.join(item), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'],down_time, id_tag)
-        os.system(cmd)
-        TASK.task_queue.append(TASK.task_id)
-        TASK.task_id += 1
+    #list_group = [id_list[:]]
+    #for item in list_group:
+    command = 'bash task.sh {} {} {} {} {} {} {} {} {} | ts'.format(','.join(id_list), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'],down_time, id_tag)
+    process = subprocess.Popen(command, shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT, universal_newlines=True)
+    for line in process.stdout:
+        #print(line.strip())
+        SOCKETIO.emit('progress', {'data': line.strip()}, namespace='/logging')
+        SOCKETIO.sleep(0)
+    if process.poll() == 0:
+        TASK.task_status = 0
+    TASK.task_queue.append(TASK.task_id)
+    TASK.task_id += 1
 
 
 @APP.route('/', methods=['GET', 'POST'])
@@ -173,32 +180,22 @@ def index():
 def postform():
     form = DownloadForm()
     if form.validate_on_submit():
-        add_ts_task(form.id_value.data, form.id_type.data, form.id_tag.data)
-        if TASK.task_index == 1 or TASK.pushlog_finished is True:
-            SOCKETIO.emit('message', {'data': 'ts started'}, namespace='/logging')
-        return jsonify({'status': 'success', 'message': 'task added'})
+        if TASK.task_status == 1:
+            SOCKETIO.emit('message', {'data': 'error :  task exists'}, namespace='/logging')
+            return jsonify({'status': 'error', 'message': form.errors})
+        try:
+            task_thread = Thread(target=add_ts_task, args=(form.id_value.data, form.id_type.data, form.id_tag.data))
+            task_thread.daemon = True
+            task_thread.start()
+            return jsonify({'status': 'success', 'message': 'task added'})
+        except Exception as e:
+            SOCKETIO.emit('message', {'data': str(e)}, namespace='/logging')
+            return jsonify({'status': 'error', 'message': form.errors})
     return jsonify({'status': 'error', 'message': form.errors})
 
 
 def push_log():
-    TASK.pushlog_finished = False
-    while len(TASK.task_queue) > 0:
-        task_id = TASK.task_queue.popleft()
-        job_status = subprocess.check_output("ts -s {}".format(task_id),
-                                             shell=True, universal_newlines=True)
-        if job_status.strip() == 'queued':
-            TASK.task_queue.appendleft(task_id)
-            time.sleep(60)
-            continue
-        if job_status.strip() == 'skipped':
-            continue
-
-        with subprocess.Popen(['ts', '-c', str(task_id)], stdout=subprocess.PIPE,
-                              stderr=subprocess.STDOUT, universal_newlines=True) as process:
-            for line in process.stdout:
-                SOCKETIO.emit('progress', {'data': line.strip()}, namespace='/logging')
-                SOCKETIO.sleep(0)
-    TASK.pushlog_finished = True
+    pass
 
 
 @SOCKETIO.on('connect', namespace='/logging')
@@ -213,10 +210,7 @@ def disconnect_handler():
 
 @SOCKETIO.on('message', namespace='/logging')
 def message_handler(message):
-    if message['data'] == 'you can send data now':
-        with THREAD_LOCK:
-            if TASK.background_thread is None or TASK.pushlog_finished is True:
-                TASK.background_thread = SOCKETIO.start_background_task(target=push_log)
+    pass
 
 
 @SOCKETIO.on_error_default
