@@ -44,6 +44,8 @@
 13、<del>如若配置失败，或者运行失败需要重新运行，往往会被占用端口，使用命令lsof -i:端口可查看所有占用端口程序，再使用`kill -9 pid`结束所有进程再开启服务。`kill -9 $(lsof -i:端口|awk '{if(NR==2)print $2}')` </del>
 目前已支持自动关闭占用端口程序
 
+### update
+2.0  --- 2020/10/28   支持实时显示日志
 
 ### 上传到onedrive
 目前为测试版，请在本地rclone配置好onedrive配置文件（自行谷歌），然后在fanza文件夹copy一份`cp rclone_3.conf.temp rclone_3.conf` ，然后把本地配置好的除名字外全部内容复制到rclone_3.conf,注意不要删掉原来的[DRIVE]标题，此为程序内置名字，更改后无法上传。
