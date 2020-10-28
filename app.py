@@ -51,7 +51,7 @@ SCHEDULER.start()
 ASYNC_MODE = 'eventlet'
 THREAD_LOCK = Lock()
 SOCKETIO = SocketIO(async_mode=ASYNC_MODE)
-SOCKETIO.init_app(APP)
+SOCKETIO.init_app(APP,cors_allowed_origins="*")
 
 
 class Task:
@@ -116,9 +116,9 @@ ADMIN = User(0, APP.config['ADMINUSER'], APP.config['ADMINPASSWORD'])
 
 @SCHEDULER.task('interval', id='dyno', minutes=14, misfire_grace_time=3600)
 def prevent_idiling():
-    url = '127.0.0.1:{}'.format(conf_data['runport'])
+    url = '0.0.0.0:{}'.format(conf_data['runport'])
     ts_status = subprocess.check_output(
-        "ts | awk 'NR == 1 { print $7 }'", shell=True, universal_newlines=True)
+        "awk 'NR == 1 { print $7 }' | ts", shell=True, universal_newlines=True)
     if ts_status.rstrip() == '[run=1/1]':
         requests.get(url)
 
