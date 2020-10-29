@@ -6,7 +6,7 @@
 ## 免责声明：本代码仅用于学习，下载后请勿用于商业用途，本人对此有最终解释权。
 ## Disclaimer: This code is only for learning, please do not use it for commercial purposes after downloading, I have the final right of interpretation.
 ## Tips
-1、由于本人只略懂python，其他的docker、shell没接触过，因此无法针对vps环境对shell、js等文件做出修改，只能大致更改到可以使用的程度（有小bug也不奇怪）
+1、由于本人只略懂python，其他的docker、shell没接触过，临时学习，只能大致更改到可以使用的程度（有小bug也不奇怪）
 
 2、由于存在隐私序列码等，请clone后只pull而不push，本项目已对敏感文件进行gitgnore处理，但ikoa自带的config由于特殊原因还是不在名单里，请自行注意，由于操作不当导致序列码泄露的，本项目概不负责。
 
