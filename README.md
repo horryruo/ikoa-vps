@@ -31,7 +31,7 @@
 
 7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹"iKOA"重命名，然后把"iKOA_32位"重命名为"iKOA"(区分大小写),且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），然后确认iKOA权限为755权限，否则无法启动。检查 `./iKOA` 可以单独启动iKOA才进行下一步。
 
-8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`  debian:`apt-get install moreutils`
+8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`     debian:`apt-get install moreutils`
 
 9、配置config.ini,内有说明
 
@@ -51,6 +51,8 @@
 目前为测试版，请在本地rclone配置好onedrive配置文件（自行谷歌），然后在fanza文件夹copy一份`cp rclone_3.conf.temp rclone_3.conf` ，然后把本地配置好的除名字外全部内容复制到rclone_3.conf,注意不要删掉原来的[DRIVE]标题，此为程序内置名字，更改后无法上传。
 ###  Bug
 第一次启动可能会报一次错，请多次启动
+
+debian以及ubuntu系统报错请先更新系统以及软件包`sudo apt update && sudo apt upgrade`
 
 <del>输入内容确认后，可能内容不会自动清空，原因未明（我不懂），只要没报错都是添加到任务了。</del>已解决，目前只能添加一次任务，上一次结束后才能继续添加。
 
