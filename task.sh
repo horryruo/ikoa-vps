@@ -22,7 +22,7 @@ DownloadCount=0
 cd ./fanza || exit
 ikoastart=$(./iKOA -E cid:118abp12345)
 if [[ $ikoastart =~ "这程序的实例已在运行" ]]; then
-    echo "这程序的实例已在运行"
+    echo "另一个iKOA已在运行,请手动终止程序后再启动"
     exit 1
     #while [[ $(lsof -a iKOA|awk '{if(NR==2)print $2}') ]];do
         #echo "关闭已存在的进程： $(lsof -a iKOA|awk '{if(NR==2)print $2}')"
