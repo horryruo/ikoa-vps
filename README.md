@@ -29,7 +29,7 @@
 
 7、 确保你的ikoa可以使用，本程序默认使用64位ikoa，如要使用32位，把fanza文件夹"iKOA"重命名，然后把"iKOA_32位"重命名为"iKOA"(区分大小写),且先安装ikoa所需依赖（32位glibc 2.15，64位glibc 2.28，请自行谷歌如何安装），然后确认iKOA权限为755权限，否则无法启动。检查 `./iKOA` 可以单独启动iKOA才进行下一步。
 
-        参考(系统多种多样，不一定通用，不能启动时还是谷歌吧)：debian:`sudo apt-get install libc6:i386 lib32z1`centos:`yum install -y glibc glibc-common glibc-devel glibc-headers glibc-static glibc-utils`
+   参考(系统多种多样，不一定通用，不能启动时还是谷歌吧)：debian:`sudo apt-get install libc6:i386 lib32z1`centos:`yum install -y glibc glibc-common glibc-devel glibc-headers glibc-static glibc-utils`
 
 8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`     debian:`apt-get install moreutils`
 
