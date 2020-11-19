@@ -15,7 +15,7 @@
   由于本人能力有限，不能实现完全自动化， 部分文件任需手动，
   以下过程需要一定的linux基础， 不懂的自行谷歌(⊙o⊙)
   
-1、Python 3.6+ is Required  
+1、安装 Python 3.6+  版本
 
 2、`git clone https://github.com/horryruo/ikoa-vps.git && chmod +x ikoa-vps` 
 
