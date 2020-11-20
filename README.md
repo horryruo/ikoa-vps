@@ -33,7 +33,7 @@
 
 8、原程序带有unix软件包，先自行安装：centos: `yum -y install epel-release && yum -y install moreutils`     debian:`apt-get install moreutils`
 
-9、配置config.ini,内有说明
+9、配置config.ini,内有说明（ikoa自带的config.toml不需自己配置，但是也可以根据自己需要更改某些配置，但是更改后本程序不一定能成功执行，例如ikoa多开，本程序并没有做多进程多开功能，因此开启了也是不能多个同时下载的）
 
 10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件也不会参与git同步）
 

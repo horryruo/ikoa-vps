@@ -53,6 +53,8 @@ await_scraper = false
 
 
 [behavior]
+#是否支持多开
+singleton = false
 ## policy <0-2>; 行为准则
 ## = 0; 1个视频结果仅询问是否使用了 <num:> 标签；询问是否有多个视频part
 ## = 1; 1个视频结果永不询问；询问是否有多个视频part
