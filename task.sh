@@ -8,15 +8,24 @@ LOG_PATH=$5
 USE_DRIVE=$6
 MONTHLY_ONLY_BOOL=$7
 DOWN_TIME=$8
-TAG=$9
+ACCOUNTS=$9
+TAG=${10}
 IFS="," read -r -a idList <<< "$ID"
 idListLen=${#idList[@]}
 if [[ $USE_DRIVE == "od" ]]; then
     RcloneConf="rclone_3.conf"
 elif [[ $USE_DRIVE == "gd" ]]; then
-    RcloneConf="rclone_1.conf"
+    if [[ $ACCOUNTS == "personal" ]]; then
+        RcloneConf="rclone_4.conf"
+    elif [[ $ACCOUNTS == "sa" ]]; then
+        RcloneConf="rclone_1.conf"
+    else
+        echo "配置文件accounts出错"
+        exit 1
+    fi
 else
     echo "配置文件usedrive出错"
+    exit 1
 fi
 DownloadCount=0
 cd ./fanza || exit
@@ -156,6 +165,8 @@ for i in "${!idList[@]}"; do
                     RcloneConf="rclone_1.conf"
                 elif  [[ $RcloneConf == "rclone_3.conf" ]]; then
                     RcloneConf="rclone_3.conf"
+                elif  [[ $RcloneConf == "rclone_4.conf" ]]; then
+                    RcloneConf="rclone_4.conf"
                 else 
                     echo "rclone配置文件出错"
                 fi

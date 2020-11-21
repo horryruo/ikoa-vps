@@ -156,7 +156,7 @@ def add_ts_task(id_value, id_type, id_tag):
     #list_group = [id_list[n:n + down_time] for n in range(0, len(id_list), down_time)]
     #list_group = [id_list[:]]
     #for item in list_group:
-    command = 'bash task.sh {} {} {} {} {} {} {} {} {} | ts'.format(','.join(id_list), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'],down_time, id_tag)
+    command = 'bash task.sh {} {} {} {} {} {} {} {} {} | ts'.format(','.join(id_list), id_type, TASK.task_id, conf_data['destination_path'], conf_data['log_path'],conf_data['drive'],conf_data['monthly_only'],down_time,conf_data['accounts'], id_tag)
     process = subprocess.Popen(command, shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT, universal_newlines=True)
     for line in process.stdout:
         #print(line.strip())

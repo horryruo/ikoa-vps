@@ -37,6 +37,8 @@ def read_config():
     conf_data['team_drive_id'] = team_drive_id
     down_time = config['default']['down_time']
     conf_data['down_time'] = down_time
+    accounts = config['default']['accounts']
+    conf_data['accounts'] = accounts
 
     
    

@@ -35,7 +35,7 @@
 
 9、配置config.ini,内有说明（ikoa自带的config.toml不需自己配置，但是也可以根据自己需要更改某些配置，但是更改后本程序不一定能成功执行，例如ikoa多开，本程序并没有做多进程多开功能，因此开启了也是不能多个同时下载的）
 
-10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件也不会参与git同步）
+10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件不会参与git同步）
 
 11、确保配置完毕，即可在ikoa-vps目录下，创建screen，然后运行`python3 start.py`,接着就可以在浏览器输入你的vps ip：端口，看到熟悉的页面
 
@@ -45,6 +45,7 @@
 目前已支持自动关闭占用端口程序
 
 ### update
+2.1  --- 2020/11/21   增加gd单账号支持，本地配置好后，除标题外复制到rclone_4.conf，保留'[DRIVE]'标题。
 2.0  --- 2020/10/28   支持实时显示日志,但添加任务后需等待任务完成才能继续添加。
 
 ### 上传到onedrive

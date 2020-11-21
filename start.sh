@@ -9,11 +9,18 @@ OUTPUT_FILENAME=$4
 PORT=$5
 if [[ -n $SERIAL_CODE && -n $MERGE_BOOL ]]; then
     sed -i "/^serial/c\serial = \'$SERIAL_CODE\'" ./fanza/config.toml
-    echo "team_drive = $TEAM_DRIVE_ID" >> ./fanza/rclone_1.conf
-    echo "team_drive = $TEAM_DRIVE_ID" >> ./fanza/rclone_2.conf
+    sed -i "/^team_drive/c\team_drive = ${TEAM_DRIVE_ID}" ./fanza/rclone_1.conf
+    sed -i "/^team_drive/c\team_drive = ${TEAM_DRIVE_ID}" ./fanza/rclone_2.conf
     
     if [[ $MERGE_BOOL == "false" ]]; then
-        sed -i -e "/^merge/c\merge = false" -e "/^m3u_merge/c\m3u_merge = false" ./fanza/config.toml
+        sed -i "/^merge/c\merge = false" ./fanza/config.toml
+        sed -i "/^m3u_merge/c\m3u_merge = false" ./fanza/config.toml
+    elif [[ $MERGE_BOOL == "true" ]]; then
+        sed -i "/^merge/c\merge = true" ./fanza/config.toml
+        sed -i "/^m3u_merge/c\m3u_merge = true" ./fanza/config.toml
+    else
+        echo "merge_bool 配置错误"
+        exit 1
     fi
     if [[ $OUTPUT_FILENAME == "pid" || $OUTPUT_FILENAME == "num" ]]; then
         sed -i "/^filename/c\filename = \'$OUTPUT_FILENAME\'" ./fanza/config.toml

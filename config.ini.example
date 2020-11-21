@@ -1,4 +1,5 @@
 [default]
+#每一项不能留空，不需要可以乱填一个
 #使用的网盘，gd or od
 usedrive = gd
 #下载文件夹路径，以/开头
@@ -23,6 +24,8 @@ secret_key =
 runport = 5000
 #一次执行的个数(比如一次添加10个，down_time = 5 代表下载五个再上传五个，以此类推)
 down_time = 5
+#假如使用gd，那么配置是个人账户还是service accounts(personal or sa),使用个人账户请配置rclone_4.conf
+accounts = personal
 
 [rclone_conf_gd]
 #gd的folder id
