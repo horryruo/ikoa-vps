@@ -23,7 +23,7 @@ secret_key =
 #程序运行的端口
 runport = 5000
 #一次执行的个数(比如一次添加10个，down_time = 5 代表下载五个再上传五个，以此类推)
-down_time = 5
+down_time = 1
 #假如使用gd，那么配置是个人账户还是service accounts(personal or sa),使用个人账户请配置rclone_4.conf
 accounts = personal
 
