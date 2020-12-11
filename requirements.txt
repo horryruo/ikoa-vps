@@ -7,5 +7,5 @@ flask_wtf==0.14.3
 wtforms==2.2.1
 flask_apscheduler==1.11.0
 requests==2.23.0
-flask-socketio==4.2.1
+flask-socketio==4.3.2
 eventlet==0.25.1
