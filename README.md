@@ -37,7 +37,7 @@
 
 10、原sa文件，请自行在fanza文件夹创建两个文件service_account_1.json、service_account_2.json，并分别把sa全部内容复制进去即可。（sa文件不会参与git同步）
 
-11、确保配置完毕，即可在ikoa-vps目录下，创建screen（后台运行，具体谷歌），然后运行`python3 start.py`,接着就可以在浏览器输入你的vps ip：端口，看到熟悉的页面
+11、确保配置完毕，即可在ikoa-vps目录下，创建screen（screen自行安装，具体谷歌），然后运行`python3 start.py`,接着就可以在浏览器输入你的vps ip：端口，看到熟悉的页面
 
 12、可使用nginx/caddy反代0.0.0.0:端口 即可实现https访问
 

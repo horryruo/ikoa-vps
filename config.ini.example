@@ -1,6 +1,6 @@
 [default]
 #每一项不能留空，不需要可以乱填一个
-#使用的网盘，gd or od
+#使用的网盘，gd or od，使用od请配置rclone_3.conf
 usedrive = gd
 #下载文件夹路径，以/开头
 destination_path = /ikoadownloads
@@ -18,13 +18,13 @@ serial_code = good
 monthly_only = true
 #输出文件名字规则，cid or num
 output_filename = cid
-#socket通讯密钥，首次自动生成，删除下次启动即可再次生成
+#socket通讯密钥，首次自动生成，删除下次启动可再次生成
 secret_key = 
 #程序运行的端口
 runport = 5000
-#一次执行的个数(比如一次添加10个，down_time = 5 代表下载五个再上传五个，以此类推)
+#一次执行的个数(比如一次添加10个，down_time = 5 代表下载完五个后再一起上传五个，以此类推)建议设置1，设置其他值中间如果有失败项可能会导致无法上传。
 down_time = 1
-#假如使用gd，那么配置是个人账户还是service accounts(personal or sa),使用个人账户请配置rclone_4.conf
+#假如使用gd，那么配置是个人账户还是service accounts( personal or sa ),使用个人账户时请配置rclone_4.conf
 accounts = personal
 
 [rclone_conf_gd]
