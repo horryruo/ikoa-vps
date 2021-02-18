@@ -114,7 +114,7 @@ TASK = Task()
 ADMIN = User(0, APP.config['ADMINUSER'], APP.config['ADMINPASSWORD'])
 
 
-@SCHEDULER.task('interval', id='dyno', minutes=14, misfire_grace_time=3600)
+#@SCHEDULER.task('interval', id='dyno', minutes=14, misfire_grace_time=3600)
 def prevent_idiling():
     url = '0.0.0.0:{}'.format(conf_data['runport'])
     ts_status = subprocess.check_output(
