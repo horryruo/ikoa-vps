@@ -6,7 +6,7 @@ __pycache__/
 config.ini
 push.bat
 pull.bat
-
+.history/
 fanza/downloads
 fanza/backup
 fanza/FILENAME_VAR.txt
